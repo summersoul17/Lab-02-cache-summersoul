@@ -29,6 +29,7 @@ void Cache::Straight_experiment() {
         }
         auto endTime = std::chrono::high_resolution_clock::now();
         straight_time.push_back(static_cast<NATURALS>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        delete[] arr1;
     }
     data_vector.emplace_back(straight_time, "straight");
 }
@@ -45,6 +46,7 @@ void Cache::Back_experiment() {
         }
         auto endTime = std::chrono::high_resolution_clock::now();
         back_time.push_back(static_cast<NATURALS>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        delete[] arr1;
     }
     data_vector.emplace_back(back_time, "back");
 }
@@ -68,6 +70,7 @@ void Cache::Random_experiment() {
         }
         auto endTime = std::chrono::high_resolution_clock::now();
         random_time.push_back(static_cast<NATURALS>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        delete[] arr1;
     }
     data_vector.emplace_back(random_time, "random");
 }
