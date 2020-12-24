@@ -135,26 +135,170 @@ cache_size['3'] = 8 mb;
 Ниже представлен формат и пример отчета:
 
 ```yaml
-investigation:                                       |  investigaion:
-  travel_variant: <вариант_прохода>                  |    travel_order: "direction"
-  experiments:                                       |    experiments:
-  - experiment:                                      |    - experiment:
-      number:                                        |        number: 1
-      input_data:                                    |        input_data:
-        buffer_size: <размер_буфера>                 |          buffer_size: "1mb"
-      results:                                       |        results:
-        duration: <продолжительность>                |          duration: "1ns"
-  - experiment:                                      |    - experiment:
-      number: <номер_эксперимента>                   |        number: 2
-      input_data:                                    |        input_data:
-        buffer_size: <размер_буфера>                 |          buffer_size: "2mb"
-      results:                                       |        results:
-        duration: <продолжительность>                |          duration: "2ns"
-                                                     |
-investigation:                                       |  investigation:
-...                                                  |  ...
+ Invistigations:
+      travel_variant: straight
+      experiments:
+            -experiment:
+            number: 1
+              input_data:
+                 buffer_size: 0.5 mb
+              results:
+                 duration: 17194 nanoseconds
+
+            -experiment:
+             number: 2
+              input_data:
+                 buffer_size: 1 mb
+              results:
+:                 duration: 31198 nanoseconds
+
+            -experiment:
+             number: 3
+              input_data:
+                 buffer_size: 2 mb
+              results:
+                 duration: 84848 nanoseconds
+
+            -experiment:
+             number: 4
+              input_data:
+                 buffer_size: 4 mb
+              results:
+                 duration: 177457 nanoseconds
+
+            -experiment:
+             number: 5
+              input_data:
+                 buffer_size: 8 mb
+              results:
+                 duration: 487662 nanoseconds
+
+            -experiment:
+             number: 6
+              input_data:
+                 buffer_size: 16 mb
+              results:
+                 duration: 701131 nanoseconds
+
+            -experiment:
+             number: 7
+              input_data:
+                 buffer_size: 18 mb
+              results:
+                 duration: 339334 nanoseconds
+
+ Invistigations:
+      travel_variant: back
+      experiments:
+            -experiment:
+             number: 1
+              input_data:
+                 buffer_size: 0.5 mb
+              results:
+                 duration: 11248 nanoseconds
+
+            -experiment:
+             number: 2
+              input_data:
+                 buffer_size: 1 mb
+              results:
+                 duration: 18727 nanoseconds
+
+           -experiment:
+             number: 3
+              input_data:
+                 buffer_size: 2 mb
+              results:
+                 duration: 44855 nanoseconds
+
+            -experiment:
+             number: 4
+              input_data:
+                 buffer_size: 4 mb
+              results:
+                 duration: 98221 nanoseconds
+
+            -experiment:
+             number: 5
+              input_data:
+                 buffer_size: 8 mb
+              results:
+                 duration: 152220 nanoseconds
+
+            -experiment:
+             number: 6
+              input_data:
+                 buffer_size: 16 mb
+              results:
+                 duration: 319296 nanoseconds
+
+            -experiment:
+             number: 7
+              input_data:
+                 buffer_size: 18 mb
+              results:
+                 duration: 320456 nanoseconds
+
+ Invistigations:
+      travel_variant: random
+      experiments:
+            -experiment:
+             number: 1
+              input_data:
+                 buffer_size: 0.5 mb
+              results:
+                 duration: 30733 nanoseconds
+
+            -experiment:
+             number: 2
+              input_data:
+                 buffer_size: 1 mb
+              results:
+                 duration: 48975 nanoseconds
+
+            -experiment:
+             number: 3
+              input_data:
+                 buffer_size: 2 mb
+              results:
+                 duration: 105047 nanoseconds
+
+            -experiment:
+             number: 4
+              input_data:
+                 buffer_size: 4 mb
+              results:
+                 duration: 212950 nanoseconds
+
+            -experiment:
+             number: 5
+              input_data:
+                 buffer_size: 8 mb
+              results:
+                 duration: 472061 nanoseconds
+
+            -experiment:
+             number: 6
+              input_data:
+                 buffer_size: 16 mb
+              results:
+                 duration: 942884 nanoseconds
+
+            -experiment:
+             number: 7
+              input_data:
+                 buffer_size: 18 mb
+              results:
+                 duration: 1068447 nanoseconds
 ```
+###Straight experiment
 
-### Рекомендации
+![Cache](./images/straight.jpeg)
 
-При создание неиспользуемых переменных для считывание данных из буфера можно использовать аттрибут `[[maybe_unused]]`
+###Back experiment
+
+![Cache](./images/back.jpeg)
+
+###Random experiment
+
+![Cache](./images/random.jpeg)

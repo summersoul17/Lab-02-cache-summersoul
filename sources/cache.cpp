@@ -21,11 +21,12 @@ void Cache::Straight_experiment() {
         [[maybe_unused]]double k;
         Cache::Cache_warming(cache_size, arr1);
         auto startTime = std::chrono::high_resolution_clock::now();
-        for(unsigned i = 0; i < cache_size*count_of_travels; i+=16){
+        for(unsigned i = 0; i < cache_size*count_of_travels; i+=step){
             k = arr1[i%1000];
         }
         auto endTime = std::chrono::high_resolution_clock::now();
-        straight_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        straight_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds(
+                (endTime - startTime) / count_of_travels).count()));
         delete[] arr1;
     }
     data_vector.emplace_back(straight_time, "straight");
@@ -38,11 +39,12 @@ void Cache::Back_experiment() {
         [[maybe_unused]]double k;
         Cache::Cache_warming(cache_size, arr1);
         auto startTime = std::chrono::high_resolution_clock::now();
-        for(unsigned i = cache_size*count_of_travels; i > 0; i-=16){
+        for(unsigned i = cache_size*count_of_travels; i > 0; i-=step){
             k = arr1[i%1000];
         }
         auto endTime = std::chrono::high_resolution_clock::now();
-        back_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        back_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds(
+                (endTime - startTime) / count_of_travels).count()));
         delete[] arr1;
     }
     data_vector.emplace_back(back_time, "back");
@@ -56,17 +58,18 @@ void Cache::Random_experiment() {
         unsigned cache_size = cache[j]*count_of_ints;
         double* arr1 = new double[cache_size];
         [[maybe_unused]]double k;
-        for(unsigned i = 0; i < cache_size; i+=16) arr.emplace_back(i);
+        for(unsigned i = 0; i < cache_size; i+=step) arr.emplace_back(i);
             start = arr.begin();
             end = arr.end();
             shuffle(start, end,std::mt19937(std::random_device()()));
         Cache::Cache_warming(cache_size, arr1);
         auto startTime = std::chrono::high_resolution_clock::now();
-        for(unsigned i = 0; i < cache_size*count_of_travels/16; ++i){
+        for(unsigned i = 0; i < cache_size*count_of_travels/step; ++i){
             k = arr1[arr[i%1000]];
         }
         auto endTime = std::chrono::high_resolution_clock::now();
-        random_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds((endTime - startTime) / 1000).count()));
+        random_time.push_back(static_cast<unsigned>(std::chrono::nanoseconds(
+                (endTime - startTime) / count_of_travels).count()));
         delete[] arr1;
     }
     data_vector.emplace_back(random_time, "random");

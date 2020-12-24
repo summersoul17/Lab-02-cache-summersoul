@@ -44,6 +44,7 @@ private:
     vector<Data> data_vector;
     const int count_of_ints = 131072;
     const int count_of_travels = 1000;
+    const int step = 16;
 };
 struct Data{
     vector<unsigned> time_vector;
