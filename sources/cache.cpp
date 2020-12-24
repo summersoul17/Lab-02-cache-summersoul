@@ -19,7 +19,7 @@ void Cache::Cache_back(){
 void Cache::Straight_experiment() {
     vector<NATURALS> straight_time;
     for(size_t j = 0; j < cache.size(); ++j){
-        NATURALS cache_size = cache[j]*1024*1024/8;
+        NATURALS cache_size = cache[j]*1024*1024/8; //count of ints in all cache lines
         double* arr1 = new double[cache_size];
         [[maybe_unused]]double k;
         Cache::Cache_warming(cache_size, arr1);

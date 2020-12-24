@@ -3,7 +3,7 @@
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
 
-#define NATURALS unsigned int
+#define NATURALS unsigned int //директива препроцессора сделана для удобства
 
 #include <vector>
 #include <cmath>
@@ -12,7 +12,6 @@
 #include <string>
 #include <chrono>
 #include <algorithm>
-#include <functional>
 
 using std::vector;
 using std::cout;
@@ -31,7 +30,7 @@ public:
     void Back_experiment();
     void Random_experiment();
     static void inline Cache_warming(const NATURALS& cache_size, const double* arr1){
-        [[maybe_unused]]double  k= 0;
+        [[maybe_unused]]double  k = 0;
         for(NATURALS i = 0; i < cache_size; i+=16){
             k = arr1[i];
         }
